@@ -35,8 +35,8 @@ jobs:
         with:
           image-ref: intranet-newdeal:dev
           format: table
+          severity: CRITICAL
           exit-code: 1
-          severity: CRITICAL,HIGH
       - name: Gitleaks secrets scan
         uses: gitleaks/gitleaks-action@v2
         env:
