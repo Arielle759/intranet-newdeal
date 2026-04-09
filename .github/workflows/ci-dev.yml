@@ -1,9 +1,7 @@
-﻿name: CI - Build, Scan, Push
-
+name: CI - Build, Scan, Push
 on:
   push:
     branches: [ dev ]
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -18,11 +16,11 @@ jobs:
         with:
           name: docker-image
           path: image.tar
-
   security-scan:
     needs: build
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
       - name: Download artifact
         uses: actions/download-artifact@v4
         with:
@@ -41,7 +39,6 @@ jobs:
         uses: gitleaks/gitleaks-action@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
   push-to-dockerhub:
     needs: security-scan
     runs-on: ubuntu-latest
