@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Deal Technologique – Sénégal 2026</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #ffffff;
+            color: #1a2a4f;
+            scroll-behavior: smooth;
+        }
+
+        /* Couleurs vives */
+        :root {
+            --bleu-electrique: #0066ff;
+            --bleu-nuit: #002266;
+            --vert-lime: #00cc66;
+            --orange-fluence: #ff6600;
+            --jaune-solaire: #ffcc00;
+            --gris-perle: #f5f7fc;
+            --ombre: 0 10px 25px -5px rgba(0,0,0,0.05), 0 8px 10px -6px rgba(0,0,0,0.02);
+        }
+
+        /* Header bleu nuit */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            background: var(--bleu-nuit);
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .logo-img {
+            height: 50px;
+            width: auto;
+            filter: brightness(0) invert(1);
+        }
+        .logo-text {
+            font-weight: 800;
+            font-size: 1.3rem;
+            color: white;
+        }
+        .logo-text span {
+            font-weight: 400;
+            font-size: 0.9rem;
+            color: var(--jaune-solaire);
+        }
+        .nav-links a {
+            margin-left: 2rem;
+            text-decoration: none;
+            font-weight: 600;
+            color: white;
+            transition: 0.2s;
+        }
+        .nav-links a:hover {
+            color: var(--jaune-solaire);
+        }
+        .menu-toggle {
+            display: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: white;
+        }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, var(--bleu-nuit), var(--bleu-electrique));
+            color: white;
+            text-align: center;
+            padding: 5rem 2rem;
+        }
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+        .hero .btn {
+            display: inline-block;
+            margin-top: 2rem;
+            background: var(--vert-lime);
+            color: var(--bleu-nuit);
+            padding: 0.8rem 2rem;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+        .hero .btn:hover {
+            background: var(--jaune-solaire);
+            transform: translateY(-3px);
+        }
+
+        /* Nouvelle section : Sénégal 20e / 2050 */
+        .senegal-stats {
+            background: linear-gradient(120deg, #ffffff 0%, #eef2ff 100%);
+            padding: 3rem 2rem;
+            text-align: center;
+            border-bottom: 1px solid rgba(0,102,255,0.2);
+        }
+        .senegal-stats .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .big-number {
+            font-size: 5rem;
+            font-weight: 800;
+            color: var(--bleu-electrique);
+            line-height: 1;
+        }
+        .big-number small {
+            font-size: 2rem;
+        }
+        .stat-tagline {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--bleu-nuit);
+            margin: 1rem 0;
+        }
+        .stat-quote {
+            font-size: 1.3rem;
+            color: #1e2a5e;
+            max-width: 800px;
+            margin: 1rem auto;
+        }
+        .stat-quote strong {
+            color: var(--orange-fluence);
+        }
+        .accelerate {
+            display: inline-block;
+            margin-top: 1.5rem;
+            background: var(--orange-fluence);
+            color: white;
+            padding: 0.6rem 2rem;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+            box-shadow: var(--ombre);
+        }
+
+        /* Sections communes (inchangées) */
+        section {
+            padding: 4rem 5%;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .section-title {
+            font-size: 2.2rem;
+            color: var(--bleu-nuit);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--orange-fluence);
+            margin-top: 8px;
+        }
+        .section-sub {
+            color: #4a5568;
+            margin-bottom: 2.5rem;
+            font-size: 1.1rem;
+        }
+
+        /* Président */
+        .president-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            align-items: center;
+            background: var(--gris-perle);
+            border-radius: 28px;
+            padding: 2rem;
+            margin-top: 1rem;
+        }
+        .president-img {
+            flex: 1;
+            text-align: center;
+        }
+        .president-img img {
+            max-width: 100%;
+            border-radius: 20px;
+            box-shadow: var(--ombre);
+            max-height: 300px;
+            object-fit: cover;
+        }
+        .president-text {
+            flex: 2;
+            color: var(--bleu-nuit);
+            line-height: 1.6;
+        }
+
+        /* Axes */
+        .axes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        .axis-card {
+            background: white;
+            border-radius: 24px;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: var(--ombre);
+            border-bottom: 4px solid var(--bleu-electrique);
+        }
+        .axis-card:hover {
+            transform: translateY(-10px);
+            border-bottom-color: var(--orange-fluence);
+        }
+        .axis-icon {
+            font-size: 3rem;
+            color: var(--bleu-electrique);
+            margin-bottom: 1rem;
+        }
+        .axis-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Stats */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        .stat-item {
+            background: var(--gris-perle);
+            border-radius: 20px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: 0.2s;
+        }
+        .stat-number {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: var(--bleu-electrique);
+        }
+        .stat-label {
+            font-size: 0.9rem;
+            color: #2d3748;
+        }
+
+        /* Programmes */
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+        .program-card {
+            background: white;
+            border-radius: 16px;
+            padding: 1.2rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            border-left: 6px solid var(--orange-fluence);
+            transition: 0.2s;
+        }
+        .program-card:hover {
+            transform: translateX(5px);
+            border-left-color: var(--vert-lime);
+        }
+        .program-number {
+            font-weight: 800;
+            font-size: 1.8rem;
+            color: var(--bleu-electrique);
+        }
+
+        .btn-download {
+            background: var(--vert-lime);
+            color: var(--bleu-nuit);
+            padding: 12px 28px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: 0.2s;
+        }
+        .btn-download:hover {
+            background: var(--jaune-solaire);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bleu-nuit);
+            color: white;
+            padding: 3rem 5%;
+            text-align: center;
+        }
+        footer a {
+            color: var(--jaune-solaire);
+            text-decoration: none;
+        }
+        .social-icons a {
+            color: white;
+            margin: 0 10px;
+            font-size: 1.5rem;
+            transition: 0.2s;
+        }
+        .social-icons a:hover {
+            color: var(--vert-lime);
+        }
+
+        /* Animations */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                background: var(--bleu-nuit);
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                padding: 1rem;
+                gap: 1rem;
+            }
+            .nav-links a {
+                margin: 0;
+            }
+            .menu-toggle {
+                display: block;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .president-grid {
+                flex-direction: column;
+            }
+            .big-number {
+                font-size: 3rem;
+            }
+            .stat-tagline {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="logo-area">
+            <img src="images/logo.png" alt="NDT Logo" class="logo-img" onerror="this.src='https://placehold.co/60x60?text=NDT'">
+            <div class="logo-text">NEW DEAL <span>TECHNOLOGIQUE</span></div>
+        </div>
+        <div class="menu-toggle" id="mobile-menu">☰</div>
+        <div class="nav-links" id="nav-links">
+            <a href="#accueil">Accueil</a>
+            <a href="#senegal-chiffre">Sénégal 2050</a>
+            <a href="#mot-president">Président</a>
+            <a href="#leadership">Leadership</a>
+            <a href="#axes">Axes</a>
+            <a href="#indicateurs">Indicateurs</a>
+            <a href="#programmes">Programmes</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </header>
+
+    <section id="accueil" class="hero">
+        <h1>New Deal Technologique<br>Sénégal 2050</h1>
+        <p>Une société numérique, un pays de services à forte valeur ajoutée.<br> <strong>Redresser · Accélérer · Impulser</strong></p>
+        <a href="#senegal-chiffre" class="btn">Découvrir la vision <i class="fas fa-arrow-right"></i></a>
+    </section>
+
+    <main>
+        <!-- NOUVELLE SECTION : Sénégal 20e / 2050 -->
+        <section id="senegal-chiffre" class="senegal-stats">
+            <div class="container">
+                <div class="big-number">#Sénégal <small>20ᵉ</small></div>
+                <div class="stat-tagline">EN 2050, LE <strong>SÉNÉGAL</strong> SERA UNE SOCIÉTÉ NUMÉRIQUE,<br>UN PAYS DE SERVICES À FORTE VALEUR AJOUTÉE.</div>
+                <div class="stat-quote">
+                    <i class="fas fa-rocket" style="color: var(--orange-fluence);"></i> Une ambition portée par le New Deal Technologique.
+                </div>
+                <div class="accelerate">
+                    <i class="fas fa-tachometer-alt"></i> ACCÉLÉRER
+                </div>
+            </div>
+        </section>
+
+        <!-- Message du Président -->
+        <section id="mot-president">
+            <div class="container">
+                <h2 class="section-title">Le Mot du Président</h2>
+                <div class="president-grid">
+                    <div class="president-img">
+                        <img src="images/president.png" alt="Président Bassirou Diomaye Faye" onerror="this.src='https://placehold.co/300x350?text=Bassirou+Diomaye+Faye'">
+                        <p style="margin-top: 0.8rem; font-weight: bold;">Bassirou Diomaye Faye<br>Président de la République</p>
+                    </div>
+                    <div class="president-text">
+                        <p>Le Sénégal s’engage résolument sur la voie d’une nouvelle ère où le numérique se révèle être le moteur d’un développement inclusif et durable. Dans le prolongement de l’Agenda National de Transformation – Vision Sénégal 2050, j’ai lancé le <strong>« New Deal Technologique »</strong>, une initiative audacieuse qui renforce la souveraineté numérique du Sénégal et met l’innovation au service du progrès social et économique.</p>
+                        <p>Ma vision pour notre pays est claire : faire du Sénégal non seulement un pôle d’excellence technologique en Afrique de l’Ouest, mais aussi un hub incontournable sur l’ensemble du continent. Nous ambitionnons de créer un écosystème dynamique, fondé sur la valorisation de notre capital humain, le soutien à l’entrepreneuriat et l’essor de PME et de start-up innovantes. Par ce biais, nous entendons stimuler la compétitivité de notre économie, renforcer la cohésion sociale et offrir à chaque citoyen de réelles opportunités d’épanouissement professionnel.</p>
+                        <p style="text-align: right; margin-top: 1rem;"><strong>Le Président de la République</strong></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Leadership / New Deal Technologique -->
+        <section id="leadership" style="background: var(--gris-perle);">
+            <div class="container">
+                <h2 class="section-title">Le New Deal Technologique</h2>
+                <p class="section-sub">Une stratégie numérique alignée à l’Agenda National de Transformation – Vision 2050</p>
+                <p>Le Président de la République, Son Excellence Monsieur Bassirou Diomaye Faye, a présenté le 14 octobre 2024 un nouveau cadre de référence : l’<strong>Agenda National de Transformation (ANT)</strong>. Ce cadre s’inscrit dans la Vision 2050 visant à bâtir « une nation souveraine, juste et prospère ». L’objectif principal est de promouvoir un développement endogène et durable, porté par des territoires responsabilisés.</p>
+                <p>Le numérique, secteur stratégique et transversal, joue un rôle central. Sous la conduite du Ministre Alioune Sall, le <strong>New Deal Technologique</strong> vise à faire du Sénégal un pays de services à forte valeur ajoutée, avec une couverture réseau universelle, l’identité numérique et la transformation digitale de l’administration.</p>
+                <div style="margin: 2rem 0;">
+                    <a href="#" class="btn-download"><i class="fas fa-download"></i> Télécharger la stratégie</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4 axes stratégiques -->
+        <section id="axes">
+            <div class="container">
+                <h2 class="section-title">Les 4 grands axes</h2>
+                <div class="axes-grid">
+                    <div class="axis-card fade-up">
+                        <div class="axis-icon"><i class="fas fa-shield-alt"></i></div>
+                        <h3>Souveraineté numérique</h3>
+                        <p>Cloud souverain, data centers, cybersécurité, IA, maîtrise technologique.</p>
+                    </div>
+                    <div class="axis-card fade-up">
+                        <div class="axis-icon"><i class="fas fa-laptop-code"></i></div>
+                        <h3>Digitalisation des services publics</h3>
+                        <p>E-gov, identité numérique, procédures dématérialisées, guichet unique.</p>
+                    </div>
+                    <div class="axis-card fade-up">
+                        <div class="axis-icon"><i class="fas fa-chart-line"></i></div>
+                        <h3>Développement de l’économie numérique</h3>
+                        <p>Startups, e-commerce, paiement électronique, fintech, smart cities.</p>
+                    </div>
+                    <div class="axis-card fade-up">
+                        <div class="axis-icon"><i class="fas fa-globe-africa"></i></div>
+                        <h3>Leadership africain dans le numérique</h3>
+                        <p>Rayonnement continental, pôles d’excellence, e-champions africains.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Indicateurs clés 2034 -->
+        <section id="indicateurs" style="background: var(--gris-perle);">
+            <div class="container">
+                <h2 class="section-title">Les indicateurs clés à l'horizon 2034</h2>
+                <div class="stats-grid" id="stats-container">
+                    <div class="stat-item"><div class="stat-number" data-target="95">0</div><div class="stat-label">% connectivité de qualité</div></div>
+                    <div class="stat-item"><div class="stat-number" data-target="80">0</div><div class="stat-label">% utilisation services numériques</div></div>
+                    <div class="stat-item"><div class="stat-number" data-target="90">0</div><div class="stat-label">% Sénégalais avec identité numérique</div></div>
+                    <div class="stat-item"><div class="stat-number" data-target="80">0</div><div class="stat-label">% foncier identifié numériquement</div></div>
+                    <div class="stat-item"><div class="stat-number" data-target="90">0</div><div class="stat-label">% procédures dématérialisées</div></div>
+                    <div class="stat-item"><div class="stat-number" data-target="95">0</div><div class="stat-label">% entreprises maturité digitale</div></div>
+                    <div class="stat-item"><div class="stat-number" data-target="100">0</div><div class="stat-label">% données sensibles hébergées localement</div></div>
+                    <div class="stat-item"><div class="stat-number" data-target="500">0</div><div class="stat-label">Start-up Tech labélisées</div></div>
+                    <div class="stat-item"><div class="stat-number" data-target="100000">0</div><div class="stat-label">Diplômés du Numérique</div></div>
+                    <div class="stat-item"><div class="stat-number" data-target="150000">0</div><div class="stat-label">Emplois directs</div></div>
+                    <div class="stat-item"><div class="stat-number" data-target="15">0</div><div class="stat-label">% contribution au PIB</div></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Programmes prioritaires -->
+        <section id="programmes">
+            <div class="container">
+                <h2 class="section-title">Digital Master Plan – Programmes prioritaires</h2>
+                <div class="programs-grid">
+                    <div class="program-card"><span class="program-number">01</span> Cadre Réglementaire et Gouvernance</div>
+                    <div class="program-card"><span class="program-number">02</span> Infrastructures et Connectivité Universelle</div>
+                    <div class="program-card"><span class="program-number">03</span> Souveraineté Numérique et Cyber Résilience</div>
+                    <div class="program-card"><span class="program-number">04</span> Infrastructure Publique Numérique (e-ID, e-paiement)</div>
+                    <div class="program-card"><span class="program-number">05</span> Modernisation du SI de l’État</div>
+                    <div class="program-card"><span class="program-number">06</span> Dématérialisation des procédures</div>
+                    <div class="program-card"><span class="program-number">07</span> Formation et compétences numériques</div>
+                    <div class="program-card"><span class="program-number">08</span> Sénégal Digital Factory</div>
+                    <div class="program-card"><span class="program-number">09</span> Fonds d’Investissement et Banques du Numérique</div>
+                    <div class="program-card"><span class="program-number">10</span> Sénégal Villes Intelligentes</div>
+                    <div class="program-card"><span class="program-number">11</span> Déclinaison sectorielle (e-Santé, e-Education...)</div>
+                    <div class="program-card"><span class="program-number">12</span> Digitalisation du secteur informel</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact -->
+        <section id="contact" style="background: var(--bleu-nuit); color: white;">
+            <div class="container" style="text-align: center;">
+                <h2 style="color: white;">Visitez notre site internet</h2>
+                <p>Ministère de la Communication, des Télécommunications et du Numérique</p>
+                <p><i class="fas fa-envelope"></i> contact@newdeal.sn &nbsp;|&nbsp; <i class="fas fa-phone"></i> +221 33 839 00 00</p>
+                <p>Immeuble administratif, Avenue Carde, Dakar, Sénégal</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© COPYRIGHT MCTN 2026 – New Deal Technologique. Tous droits réservés.</p>
+        <p>Design adapté pour l'examen DevOps</p>
+    </footer>
+
+    <script>
+        // Menu mobile
+        const menuBtn = document.getElementById('mobile-menu');
+        const navLinks = document.getElementById('nav-links');
+        if(menuBtn) {
+            menuBtn.addEventListener('click', () => {
+                if(navLinks.style.display === 'flex') navLinks.style.display = 'none';
+                else navLinks.style.display = 'flex';
+            });
+        }
+
+        // Animation fade-up
+        const faders = document.querySelectorAll('.fade-up');
+        const appearOptions = { threshold: 0.2 };
+        const appearOnScroll = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    appearOnScroll.unobserve(entry.target);
+                }
+            });
+        }, appearOptions);
+        faders.forEach(fader => appearOnScroll.observe(fader));
+
+        // Compteurs stats
+        const statsSection = document.getElementById('indicateurs');
+        let counted = false;
+        const statNumbers = document.querySelectorAll('.stat-number');
+        function animateNumbers() {
+            statNumbers.forEach(el => {
+                const target = parseInt(el.getAttribute('data-target'));
+                let current = 0;
+                const increment = target / 80;
+                const updateCounter = () => {
+                    current += increment;
+                    if(current < target) {
+                        el.innerText = Math.floor(current);
+                        requestAnimationFrame(updateCounter);
+                    } else {
+                        el.innerText = target;
+                    }
+                };
+                updateCounter();
+            });
+        }
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting && !counted) {
+                    counted = true;
+                    animateNumbers();
+                }
+            });
+        }, { threshold: 0.3 });
+        if(statsSection) statsObserver.observe(statsSection);
+
+        // Responsive nav
+        window.addEventListener('resize', () => {
+            if(window.innerWidth > 768) {
+                navLinks.style.display = 'flex';
+            } else {
+                if(navLinks.style.display !== 'flex') navLinks.style.display = 'none';
+            }
+        });
+        if(window.innerWidth > 768) navLinks.style.display = 'flex';
+        else navLinks.style.display = 'none';
+    </script>
+</body>
+</html>
