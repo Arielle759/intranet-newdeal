@@ -1,4 +1,25 @@
-deploy:
+name: CD - Deploy to Production
+
+on:
+  push:
+    branches: [ prod ]
+
+jobs:
+  security-scan-pre-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build Docker image
+        run: docker build -t intranet-newdeal:prod .
+      - name: Scan avec Trivy
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: intranet-newdeal:prod
+          format: table
+          exit-code: 1
+          severity: CRITICAL
+
+  deploy:
     needs: security-scan-pre-deploy
     runs-on: ubuntu-latest
     steps:
@@ -9,3 +30,13 @@ deploy:
           docker stop intranet-newdeal || true
           docker rm intranet-newdeal || true
           docker run -d --name intranet-newdeal -p 80:80 intranet-prod
+
+  notify:
+    needs: [security-scan-pre-deploy, deploy]
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send email notification
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address
